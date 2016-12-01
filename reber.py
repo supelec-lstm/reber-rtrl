@@ -46,6 +46,8 @@ def train_and_monitor(path, N_train):
 	accuracies = []
 	f = open(path)
 	learning_rate = 0.1
+	for _ in range(np.random.randint(0, 1000000)):
+		next(f)
 	for i in range(N_train):
 		string = f.readline().strip()
 		network.train_sequence(string_to_sequence(string), learning_rate)
@@ -119,9 +121,9 @@ def prettify(proba):
 
 if __name__ == '__main__':
 	for _ in range(1):
-		#network = train_and_monitor(train_path, 200000)
+		network = train_and_monitor(train_path, 500000)
 		# Save the network
-		#pickle.dump(network, open('reber.pickle', 'wb'))
+		pickle.dump(network, open('reber.pickle', 'wb'))
 		network = pickle.load(open('reber.pickle', 'rb'))
 		#test_reber(network)
 		print(accuracy(network, test_path, 10000))
