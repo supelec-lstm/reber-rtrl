@@ -47,6 +47,7 @@ class Network:
 
 	def update_weights(self, learning_rate):
 		self.W -= learning_rate * self.acc_dJdW
+		self.acc_dJdW = np.zeros(self.W.shape)
 
 	def reset_memoization(self):
 		self.y = np.zeros(self.nb_hidden_units+self.nb_output_units)
